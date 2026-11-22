@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neon Real-Time Clock &amp; Stopwatch</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="clock-card">
+    <div class="tabs">
+      <button id="clock-tab" class="tab active">Clock</button>
+      <button id="timer-tab" class="tab">Stopwatch</button>
+    </div>
+    <div id="clock-view" class="view">
+      <div id="clock-display" class="neon-text">00:00:00</div>
+      <div id="date-display" class="date-text">SUNDAY, 22 NOV 2027</div>
+    </div>
+    <div id="timer-view" class="view" style="display: none;">
+      <div id="timer-display" class="neon-text">00:00.0</div>
+      <div class="timer-controls">
+        <button id="sw-start" class="ctrl-btn">Start</button>
+        <button id="sw-stop" class="ctrl-btn">Pause</button>
+        <button id="sw-reset" class="ctrl-btn">Reset</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const h = String(now.getHours()).padStart(2, '0');
+      const m = String(now.getMinutes()).padStart(2, '0');
+      const s = String(now.getSeconds()).padStart(2, '0');
+      document.getElementById('clock-display').textContent = `${h}:${m}:${s}`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    let swInterval = null;
+    let swTime = 0;
+    const swDisp = document.getElementById('timer-display');
+    document.getElementById('sw-start').addEventListener('click', () => {
+      if (!swInterval) {
+        swInterval = setInterval(() => {
+          swTime += 100;
+          const sec = Math.floor(swTime / 1000);
+          const ms = Math.floor((swTime % 1000) / 100);
+          swDisp.textContent = `${String(sec).padStart(2, '0')}:${ms}`;
+        }, 100);
+      }
+    });
+    document.getElementById('sw-stop').addEventListener('click', () => {
+      clearInterval(swInterval);
+      swInterval = null;
+    });
+    document.getElementById('sw-reset').addEventListener('click', () => {
+      clearInterval(swInterval);
+      swInterval = null;
+      swTime = 0;
+      swDisp.textContent = '00:00.0';
+    });
+
+    document.getElementById('clock-tab').addEventListener('click', () => {
+      document.getElementById('clock-view').style.display = 'block';
+      document.getElementById('timer-view').style.display = 'none';
+      document.getElementById('clock-tab').classList.add('active');
+      document.getElementById('timer-tab').classList.remove('active');
+    });
+    document.getElementById('timer-tab').addEventListener('click', () => {
+      document.getElementById('clock-view').style.display = 'none';
+      document.getElementById('timer-view').style.display = 'block';
+      document.getElementById('timer-tab').classList.add('active');
+      document.getElementById('clock-tab').classList.remove('active');
+    });
+  </script>
+</body>
+</html>

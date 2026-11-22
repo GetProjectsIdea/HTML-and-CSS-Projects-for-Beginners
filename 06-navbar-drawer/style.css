@@ -1,0 +1,18 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #0f172a; color: #f8fafc; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+.navbar { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 2.5rem; background: #1e293b; border-bottom: 1px solid #334155; position: sticky; top: 0; }
+.logo { font-size: 1.2rem; font-weight: 700; color: #38bdf8; }
+.hamburger { display: none; background: transparent; border: none; color: #38bdf8; font-size: 1.5rem; cursor: pointer; }
+.nav-links { display: flex; list-style: none; gap: 1.5rem; align-items: center; }
+.nav-links a { color: #94a3b8; text-decoration: none; font-weight: 500; transition: color 0.2s; }
+.nav-links a:hover { color: #38bdf8; }
+.nav-cta { background: #38bdf8; color: #0f172a !important; padding: 6px 14px; border-radius: 6px; font-weight: 700; }
+.dropdown { position: relative; }
+.dropdown-content { display: none; position: absolute; top: 100%; left: 0; background: #0f172a; border: 1px solid #334155; border-radius: 8px; min-width: 160px; padding: 8px 0; box-shadow: 0 10px 20px rgba(0,0,0,0.4); }
+.dropdown-content a { display: block; padding: 8px 16px; margin: 0; }
+.dropdown:hover .dropdown-content { display: block; }
+@media (max-width: 768px) {
+  .hamburger { display: block; }
+  .nav-links { position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background: #0f172a; flex-direction: column; padding: 5rem 2rem; border-left: 1px solid #334155; transition: right 0.3s ease; align-items: flex-start; }
+  .nav-links.open { right: 0; }
+}

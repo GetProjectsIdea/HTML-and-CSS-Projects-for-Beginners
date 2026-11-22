@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Navbar with Drawer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">⚡ CodeBodh &amp; GetProjects</div>
+    <button id="toggle-btn" class="hamburger">☰</button>
+    <ul id="menu" class="nav-links">
+      <li><a href="#">Dashboard</a></li>
+      <li class="dropdown">
+        <a href="#" class="drop-btn">Projects ▾</a>
+        <div class="dropdown-content">
+          <a href="#">Fullstack Repos</a>
+          <a href="#">AI Agents</a>
+          <a href="#">Frontend UI</a>
+        </div>
+      </li>
+      <li><a href="#">Documentation</a></li>
+      <li><a href="https://getprojects.org" target="_blank" class="nav-cta">Visit Site</a></li>
+    </ul>
+  </nav>
+  <main style="padding: 4rem 1.5rem; text-align: center; color: #cbd5e1;">
+    <h1 style="color: #38bdf8; margin-bottom: 1rem;">Multi-Level Responsive Navigation</h1>
+    <p>Supports desktop hover dropdowns and an animated sliding mobile drawer.</p>
+  </main>
+  <script>
+    const btn = document.getElementById('toggle-btn');
+    const menu = document.getElementById('menu');
+    btn.addEventListener('click', () => { menu.classList.toggle('open'); });
+  </script>
+</body>
+</html>

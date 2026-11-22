@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Searchable Accordion FAQ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="faq-box">
+    <h2>Interactive FAQ Component</h2>
+    <input type="text" id="faq-search" placeholder="Type to filter questions...">
+    <div class="faq-list">
+      <details class="item">
+        <summary>Why choose semantic HTML5 over div wrappers?</summary>
+        <p>Semantic tags like &lt;article&gt;, &lt;section&gt;, and &lt;nav&gt; enhance screen reader accessibility and improve search engine indexing without extra JavaScript.</p>
+      </details>
+      <details class="item">
+        <summary>How does CSS Grid differ from Flexbox?</summary>
+        <p>Flexbox manages 1-dimensional layouts (rows or columns), while CSS Grid coordinates 2-dimensional layouts (rows and columns simultaneously).</p>
+      </details>
+      <details class="item">
+        <summary>Where can I download source code?</summary>
+        <p>Visit <a href="https://github.com/GetProjectsIdea" target="_blank">GetProjectsIdea on GitHub</a> for all complete code repositories.</p>
+      </details>
+    </div>
+  </div>
+  <script>
+    const search = document.getElementById('faq-search');
+    search.addEventListener('input', (e) => {
+      const q = e.target.value.toLowerCase();
+      document.querySelectorAll('.item').forEach(item => {
+        const text = item.textContent.toLowerCase();
+        item.style.display = text.includes(q) ? 'block' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
