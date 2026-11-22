@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glassmorphic Auth Card</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="glass-card">
+    <div class="tabs">
+      <button id="btn-login" class="active">Sign In</button>
+      <button id="btn-register">Register</button>
+    </div>
+    <form id="auth-form">
+      <div class="group">
+        <label>Email Address</label>
+        <input type="email" required placeholder="developer@getprojects.org">
+      </div>
+      <div class="group">
+        <label>Password</label>
+        <div class="pass-wrapper">
+          <input type="password" id="pass-input" required placeholder="••••••••">
+          <button type="button" id="eye-btn">👁️</button>
+        </div>
+      </div>
+      <button type="submit" class="btn-submit">Continue</button>
+    </form>
+  </div>
+  <script>
+    const eye = document.getElementById('eye-btn');
+    const pInput = document.getElementById('pass-input');
+    eye.addEventListener('click', () => {
+      pInput.type = pInput.type === 'password' ? 'text' : 'password';
+    });
+    document.getElementById('btn-login').addEventListener('click', () => {
+      document.getElementById('btn-login').classList.add('active');
+      document.getElementById('btn-register').classList.remove('active');
+    });
+    document.getElementById('btn-register').addEventListener('click', () => {
+      document.getElementById('btn-register').classList.add('active');
+      document.getElementById('btn-login').classList.remove('active');
+    });
+  </script>
+</body>
+</html>

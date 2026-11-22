@@ -1,0 +1,9 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #000; overflow-x: hidden; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+.parallax-container { height: 100vh; overflow-y: auto; overflow-x: hidden; perspective: 12px; }
+.layer { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.layer-bg { background: linear-gradient(to bottom, #090d16, #1e3a8a); transform: translateZ(-12px) scale(2); z-index: -2; }
+.layer-stars { color: #38bdf8; font-size: 2rem; transform: translateZ(-6px) scale(1.5); z-index: -1; letter-spacing: 2rem; }
+.layer-text { color: #fff; transform: translateZ(0); text-align: center; }
+.layer-text h1 { font-size: 3.5rem; color: #38bdf8; margin-bottom: 0.5rem; }
+.layer-text p { color: #cbd5e1; font-size: 1.2rem; }

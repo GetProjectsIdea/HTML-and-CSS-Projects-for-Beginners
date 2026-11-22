@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Developer Docs Cheatsheet</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="docs-wrap">
+    <aside class="sidebar">
+      <h3>CSS Cheatsheet</h3>
+      <input type="text" id="cheatsheet-search" placeholder="Search rules...">
+      <ul id="sidebar-list">
+        <li><a href="#flex">Flexbox Center</a></li>
+        <li><a href="#grid">Responsive Grid</a></li>
+        <li><a href="#clamp">Fluid clamp()</a></li>
+      </ul>
+    </aside>
+    <main class="content">
+      <section class="doc-card" id="flex">
+        <h2>Flexbox Centering</h2>
+        <pre><code>display: flex;
+justify-content: center;
+align-items: center;</code></pre>
+        <button class="copy-btn">Copy Snippet</button>
+      </section>
+      <section class="doc-card" id="grid">
+        <h2>CSS Grid Auto-Fit</h2>
+        <pre><code>display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 1.5rem;</code></pre>
+        <button class="copy-btn">Copy Snippet</button>
+      </section>
+      <section class="doc-card" id="clamp">
+        <h2>Fluid Typography clamp()</h2>
+        <pre><code>font-size: clamp(1.5rem, 4vw, 3rem);</code></pre>
+        <button class="copy-btn">Copy Snippet</button>
+      </section>
+    </main>
+  </div>
+  <script>
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const code = btn.previousElementSibling.textContent;
+        navigator.clipboard.writeText(code);
+        btn.textContent = '✓ Copied!';
+        setTimeout(() => btn.textContent = 'Copy Snippet', 2000);
+      });
+    });
+    document.getElementById('cheatsheet-search').addEventListener('input', e => {
+      const q = e.target.value.toLowerCase();
+      document.querySelectorAll('.doc-card').forEach(c => {
+        c.style.display = c.textContent.toLowerCase().includes(q) ? 'block' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>

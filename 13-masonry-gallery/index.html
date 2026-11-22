@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Masonry Gallery with Lightbox</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="gallery">
+    <div class="item i-tall" data-title="Alpine Peaks">🏔️ Alpine Peaks</div>
+    <div class="item" data-title="Coastal Glow">🌊 Coastal Glow</div>
+    <div class="item" data-title="Neon City">🌃 Neon City</div>
+    <div class="item i-wide" data-title="Emerald Canopy">🌲 Emerald Canopy</div>
+  </div>
+  <div id="lightbox" class="lightbox">
+    <div class="lightbox-content">
+      <span id="lb-title"></span>
+      <button id="lb-close">Close ✕</button>
+    </div>
+  </div>
+  <script>
+    const lb = document.getElementById('lightbox');
+    const lbTitle = document.getElementById('lb-title');
+    document.querySelectorAll('.item').forEach(it => {
+      it.addEventListener('click', () => {
+        lbTitle.textContent = it.dataset.title;
+        lb.style.display = 'flex';
+      });
+    });
+    document.getElementById('lb-close').addEventListener('click', () => {
+      lb.style.display = 'none';
+    });
+  </script>
+</body>
+</html>

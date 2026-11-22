@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Pricing Table</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="pricing-wrap">
+    <h2>Select Your Currency</h2>
+    <div class="cur-bar">
+      <button class="cur active" data-cur="usd">$ USD</button>
+      <button class="cur" data-cur="eur">€ EUR</button>
+      <button class="cur" data-cur="inr">₹ INR</button>
+    </div>
+    <div class="card-row">
+      <div class="card">
+        <h3>Hobby</h3>
+        <div class="price" id="c1">$0</div>
+        <p>Zero cost forever.</p>
+      </div>
+      <div class="card feat">
+        <h3>Pro</h3>
+        <div class="price" id="c2">$29</div>
+        <p>Billed monthly.</p>
+      </div>
+    </div>
+  </div>
+  <script>
+    const rates = { usd: { c1: '$0', c2: '$29' }, eur: { c1: '€0', c2: '€27' }, inr: { c1: '₹0', c2: '₹2,400' } };
+    document.querySelectorAll('.cur').forEach(b => {
+      b.addEventListener('click', () => {
+        document.querySelectorAll('.cur').forEach(c => c.classList.remove('active'));
+        b.classList.add('active');
+        const r = rates[b.dataset.cur];
+        document.getElementById('c1').textContent = r.c1;
+        document.getElementById('c2').textContent = r.c2;
+      });
+    });
+  </script>
+</body>
+</html>

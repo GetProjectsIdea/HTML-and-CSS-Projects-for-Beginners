@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scaling Recipe Card</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="recipe-box">
+    <h2>Artisanal Sourdough</h2>
+    <div class="serving-ctrl">
+      <span>Servings:</span>
+      <button class="s-btn" data-s="2">2</button>
+      <button class="s-btn active" data-s="4">4</button>
+      <button class="s-btn" data-s="8">8</button>
+    </div>
+    <ul class="ing-list">
+      <li><label><input type="checkbox"> <span class="amt" data-base="125">500</span>g Flour</label></li>
+      <li><label><input type="checkbox"> <span class="amt" data-base="87.5">350</span>ml Water</label></li>
+      <li><label><input type="checkbox"> <span class="amt" data-base="25">100</span>g Starter</label></li>
+      <li><label><input type="checkbox"> <span class="amt" data-base="2.5">10</span>g Salt</label></li>
+    </ul>
+  </div>
+  <script>
+    document.querySelectorAll('.s-btn').forEach(b => {
+      b.addEventListener('click', () => {
+        document.querySelectorAll('.s-btn').forEach(btn => btn.classList.remove('active'));
+        b.classList.add('active');
+        const count = parseFloat(b.dataset.s);
+        document.querySelectorAll('.amt').forEach(span => {
+          span.textContent = Math.round(parseFloat(span.dataset.base) * count);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
