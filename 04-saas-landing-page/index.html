@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SaaS Product Landing Page</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="logo">⚡ CloudAgent</div>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="https://getprojects.org" target="_blank" class="btn-primary">Explore Blueprint</a>
+    </div>
+  </nav>
+  <header class="hero">
+    <h1>Autonomous Agent Infrastructure Built for Production</h1>
+    <p>Deploy resilient, self-healing background automation with sub-millisecond execution telemetry.</p>
+    <div class="hero-actions">
+      <button class="btn-primary">Start Free Trial</button>
+      <button class="btn-outline">Watch 2-Min Demo</button>
+    </div>
+  </header>
+  <section class="pricing-sec" id="pricing">
+    <h2>Simple, Transparent Pricing</h2>
+    <div class="toggle-bar">
+      <span>Monthly</span>
+      <input type="checkbox" id="billing-toggle">
+      <label for="billing-toggle" class="switch"></label>
+      <span>Annual <small>(-20%)</small></span>
+    </div>
+    <div class="pricing-cards">
+      <div class="p-card">
+        <h3>Starter</h3>
+        <div class="price" id="p1-price">$29<span>/mo</span></div>
+        <p>For independent developers shipping micro-tools.</p>
+      </div>
+      <div class="p-card feat">
+        <h3>Scale</h3>
+        <div class="price" id="p2-price">$89<span>/mo</span></div>
+        <p>For engineering squads running multi-agent swarms.</p>
+      </div>
+    </div>
+  </section>
+  <script>
+    const toggle = document.getElementById('billing-toggle');
+    const p1 = document.getElementById('p1-price');
+    const p2 = document.getElementById('p2-price');
+    toggle.addEventListener('change', () => {
+      if (toggle.checked) {
+        p1.innerHTML = '$23<span>/mo</span>';
+        p2.innerHTML = '$71<span>/mo</span>';
+      } else {
+        p1.innerHTML = '$29<span>/mo</span>';
+        p2.innerHTML = '$89<span>/mo</span>';
+      }
+    });
+  </script>
+</body>
+</html>

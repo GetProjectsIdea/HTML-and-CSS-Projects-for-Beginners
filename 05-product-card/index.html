@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Product Card</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="product-card">
+    <div class="badge">In Stock</div>
+    <div id="product-art" class="visual blue">🎧</div>
+    <h2>Quantum ANC Headphones</h2>
+    <p class="meta">Spatial Audio • 45h Battery Life</p>
+    <div class="swatches">
+      <span class="swatch blue active" data-color="blue" data-emoji="🎧"></span>
+      <span class="swatch red" data-color="red" data-emoji="🎸"></span>
+      <span class="swatch green" data-color="green" data-emoji="🎮"></span>
+    </div>
+    <div class="buy-row">
+      <div class="price">$249</div>
+      <button id="add-btn" class="btn-add">Add to Cart</button>
+    </div>
+    <div id="cart-msg" class="cart-msg">✓ Added to Cart!</div>
+  </div>
+  <script>
+    const art = document.getElementById('product-art');
+    const msg = document.getElementById('cart-msg');
+    document.querySelectorAll('.swatch').forEach(s => {
+      s.addEventListener('click', () => {
+        document.querySelectorAll('.swatch').forEach(sw => sw.classList.remove('active'));
+        s.classList.add('active');
+        art.textContent = s.dataset.emoji;
+        art.className = `visual ${s.dataset.color}`;
+      });
+    });
+    document.getElementById('add-btn').addEventListener('click', () => {
+      msg.style.display = 'block';
+      setTimeout(() => msg.style.display = 'none', 2000);
+    });
+  </script>
+</body>
+</html>

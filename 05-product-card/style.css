@@ -1,0 +1,20 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: #0f172a; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+.product-card { width: 310px; background: #1e293b; border-radius: 16px; padding: 20px; border: 1px solid #334155; position: relative; color: #fff; }
+.badge { position: absolute; top: 16px; right: 16px; background: #22c55e; color: #022c22; font-size: 0.75rem; font-weight: 700; padding: 3px 8px; border-radius: 4px; }
+.visual { height: 160px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 4.5rem; margin-bottom: 16px; transition: background 0.3s ease; }
+.visual.blue { background: #0c4a6e; }
+.visual.red { background: #881337; }
+.visual.green { background: #064e3b; }
+h2 { font-size: 1.25rem; margin-bottom: 4px; }
+.meta { color: #94a3b8; font-size: 0.85rem; margin-bottom: 16px; }
+.swatches { display: flex; gap: 8px; margin-bottom: 20px; }
+.swatch { width: 22px; height: 22px; border-radius: 50%; cursor: pointer; border: 2px solid transparent; }
+.swatch.active { border-color: #fff; transform: scale(1.15); }
+.swatch.blue { background: #38bdf8; }
+.swatch.red { background: #f43f5e; }
+.swatch.green { background: #22c55e; }
+.buy-row { display: flex; justify-content: space-between; align-items: center; }
+.price { font-size: 1.5rem; font-weight: 800; color: #38bdf8; }
+.btn-add { background: #38bdf8; color: #0f172a; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 700; cursor: pointer; }
+.cart-msg { display: none; margin-top: 12px; text-align: center; color: #22c55e; font-weight: 600; font-size: 0.85rem; }
