@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Weather Card</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="weather-box">
+    <div class="top-row">
+      <select id="city-select">
+        <option value="sf">San Francisco, CA</option>
+        <option value="nyc">New York, NY</option>
+        <option value="tokyo">Tokyo, Japan</option>
+      </select>
+      <button id="unit-btn" class="unit-toggle">°C</button>
+    </div>
+    <div class="sky-visual">
+      <div class="sun"></div>
+      <div class="cloud"></div>
+    </div>
+    <div class="temp-section">
+      <div id="temp" class="temp-val">68°F</div>
+      <div id="cond" class="condition">Sunny &amp; Breezy</div>
+    </div>
+    <div class="metrics">
+      <div class="item"><span>Humidity</span><strong id="hum">52%</strong></div>
+      <div class="item"><span>Wind</span><strong id="wind">11 mph</strong></div>
+      <div class="item"><span>Pressure</span><strong id="press">1012 hPa</strong></div>
+    </div>
+  </div>
+  <script>
+    const data = {
+      sf: { f: 68, c: 20, cond: 'Sunny & Breezy', hum: '52%', wind: '11 mph', press: '1012 hPa' },
+      nyc: { f: 54, c: 12, cond: 'Overcast & Cool', hum: '68%', wind: '14 mph', press: '1018 hPa' },
+      tokyo: { f: 62, c: 17, cond: 'Clear Skies', hum: '45%', wind: '8 mph', press: '1020 hPa' }
+    };
+    let unit = 'F';
+    let city = 'sf';
+    const tempEl = document.getElementById('temp');
+    const condEl = document.getElementById('cond');
+    const humEl = document.getElementById('hum');
+    const windEl = document.getElementById('wind');
+    const pressEl = document.getElementById('press');
+    const unitBtn = document.getElementById('unit-btn');
+    const select = document.getElementById('city-select');
+
+    function render() {
+      const d = data[city];
+      tempEl.textContent = unit === 'F' ? `${d.f}°F` : `${d.c}°C`;
+      condEl.textContent = d.cond;
+      humEl.textContent = d.hum;
+      windEl.textContent = d.wind;
+      pressEl.textContent = d.press;
+      unitBtn.textContent = unit === 'F' ? 'Switch to °C' : 'Switch to °F';
+    }
+
+    select.addEventListener('change', (e) => { city = e.target.value; render(); });
+    unitBtn.addEventListener('click', () => { unit = unit === 'F' ? 'C' : 'F'; render(); });
+  </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Developer Portfolio | Pardeep Patel</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="logo">⚡ Pardeep Patel</div>
+    <div class="controls">
+      <button id="theme-btn" class="theme-toggle">☀️ Light Mode</button>
+      <button id="mobile-btn" class="mobile-toggle">☰</button>
+    </div>
+    <nav id="nav-menu" class="nav-menu">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <a href="https://getprojects.org" target="_blank" class="cta-link">GetProjects.org</a>
+    </nav>
+  </header>
+  <main>
+    <section class="hero" id="about">
+      <h1>Senior Systems &amp; Web Architect</h1>
+      <p>Building high-velocity developer tools, open-source project blueprints, and performant web interfaces.</p>
+    </section>
+    <section class="projects" id="projects">
+      <h2>Featured Works</h2>
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="fullstack">Fullstack</button>
+        <button class="filter-btn" data-filter="frontend">Frontend</button>
+      </div>
+      <div class="project-grid">
+        <div class="card" data-category="frontend">
+          <h3>HTML &amp; CSS Projects Suite</h3>
+          <p>15 production-ready interfaces with zero external framework dependencies.</p>
+          <span class="tag">HTML5 / CSS3</span>
+        </div>
+        <div class="card" data-category="fullstack">
+          <h3>LLM Guardrail Proxy</h3>
+          <p>Local reverse proxy in Python protecting AI agents from prompt injection.</p>
+          <span class="tag">Python / FastAPI</span>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script>
+    const themeBtn = document.getElementById('theme-btn');
+    themeBtn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      themeBtn.textContent = next === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
+    });
+    const mobileBtn = document.getElementById('mobile-btn');
+    const navMenu = document.getElementById('nav-menu');
+    mobileBtn.addEventListener('click', () => {
+      navMenu.classList.toggle('open');
+    });
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.dataset.filter;
+        document.querySelectorAll('.card').forEach(c => {
+          c.style.display = (f === 'all' || c.dataset.category === f) ? 'block' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>

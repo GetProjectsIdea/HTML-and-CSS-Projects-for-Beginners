@@ -1,0 +1,11 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: #0f172a; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+.calc-wrapper { width: 330px; background: #1e293b; padding: 24px; border-radius: 28px; box-shadow: 14px 14px 28px #080c16, -14px -14px 28px #26344c; border: 1px solid rgba(255, 255, 255, 0.05); }
+.display { background: #0f172a; color: #38bdf8; font-size: 2.75rem; font-family: monospace; text-align: right; padding: 18px 20px; border-radius: 16px; margin-bottom: 22px; box-shadow: inset 4px 4px 8px #05080e, inset -4px -4px 8px #19263e; overflow-x: auto; }
+.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.btn { background: #1e293b; color: #f8fafc; border: none; border-radius: 14px; padding: 18px 0; font-size: 1.25rem; font-weight: 600; cursor: pointer; box-shadow: 4px 4px 8px #0d131f, -4px -4px 8px #2f3f57; transition: all 0.15s ease; outline: none; }
+.btn:active { box-shadow: inset 2px 2px 4px #0d131f, inset -2px -2px 4px #2f3f57; transform: scale(0.97); }
+.fn { color: #f43f5e; }
+.op { color: #38bdf8; }
+.eq { background: #38bdf8; color: #0f172a; box-shadow: 0 4px 14px rgba(56, 189, 248, 0.4); }
+.zero { grid-column: span 2; }
